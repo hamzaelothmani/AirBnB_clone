@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         match_tuple = match_list[0]
         if not match_tuple[2]:
             if match_tuple[1] == "count":
-                instance_objs = storage.all()
+                instance_objs = storage.all(
                 print(len([
                     v for _, v in instance_objs.items()
                     if type(v).__name__ == match_tuple[0]]))
@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
         if not validate_classname(args, check_id=True):
             return
 
-        instance_objs = storage.all()
+        instance_objs = storage.all(
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
@@ -148,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
         if not validate_classname(args, check_id=True):
             return
 
-        instance_objs = storage.all()
+        instance_objs = storage.all(
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints string representation of all instances.
         """
         args = arg.split()
-        all_objs = storage.all()
+        all_objs = storage.all(
 
         if len(args) < 1:
             print(["{}".format(str(v)) for _, v in all_objs.items()])
@@ -182,7 +182,7 @@ class HBNBCommand(cmd.Cmd):
         if not validate_classname(args, check_id=True):
             return
 
-        instance_objs = storage.all()
+        instance_objs = storage.all(
         key = "{}.{}".format(args[0], args[1])
         req_instance = instance_objs.get(key, None)
         if req_instance is None:
